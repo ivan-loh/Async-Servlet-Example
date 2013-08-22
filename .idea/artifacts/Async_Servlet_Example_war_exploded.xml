@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Async-Servlet-Example:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Async_Servlet_Example_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Async-Servlet-Example" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Async-Servlet-Example/web/Web" />
+    </root>
+  </artifact>
+</component>
