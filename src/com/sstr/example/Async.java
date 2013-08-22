@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 @WebServlet(
         name = "async",
         value = {"/async"},
         asyncSupported = true,
         initParams = {
-                @WebInitParam(name = "JobPoolSize", value = "50")
+                @WebInitParam(name = "JobPoolSize", value = "20")
         }
 )
 public class Async extends HttpServlet {
@@ -26,7 +27,15 @@ public class Async extends HttpServlet {
     @Override
     public void init() throws ServletException {
         int size = Integer.parseInt(getInitParameter("JobPoolSize"));
-        exe = Executors.newFixedThreadPool(size);
+        exe = Executors.newFixedThreadPool(
+                size,
+                new ThreadFactory() {
+                    @Override
+                    public Thread newThread(Runnable r) {
+                        return new Thread(r, "Async Processor");
+                    }
+                }
+        );
     }
 
     @Override
@@ -87,7 +96,7 @@ public class Async extends HttpServlet {
             try {
 
                 // Simulate Time Consuming Task
-                Thread.sleep(1000);
+                Thread.sleep(10000);
 
                 ServletResponse resp = context.getResponse();
                 if (resp != null) {
