@@ -6,3 +6,6 @@ Traditional application containers uses a Thread per connection method, long pro
 
 ## JMeter Test
 With either the Sync or Async request disabled, run the test and see the performance difference in the Fast Request's Aggregate Graph
+
+## Addtional Notes
+[Evernote] (https://www.evernote.com/shard/s138/sh/fac6fa10-b1ff-4d91-a089-47858d223aa7/2cd7ed64bd02b9615301bcc57fcb2765)
